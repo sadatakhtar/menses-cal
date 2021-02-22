@@ -1,6 +1,31 @@
 .user_body{
+    border: 2px solid black;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
    
+}
+.user_form > h1{
+    border: 1px solid rgb(58, 160, 49);
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+.user_form > form{
+    border: 1px solid red;
+    height: 20vh;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.user_form > form > button {
+    width: 150px;
+    margin: auto;
+}
+
+.user_results{
+    border: 1px solid blue;
 }
 
 

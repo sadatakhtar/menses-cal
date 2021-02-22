@@ -78,22 +78,23 @@ function UserInputPage() {
                 <div className="user_form">
                     <h1>User Input Page</h1>
                     <form onSubmit={handleSubmit}>
-                        <label>Menses Start Date: <br/>
+                        <label>Menses Start Date:
                         <input type="date" onChange={handleStartDate} required/>
-                        </label><br/>
+                        </label>
 
-                        <label>Menses End Date: <br/>
+                        <label>Menses End Date: 
                         <input type="date"  onChange={handleEndDate} required/>
                         </label>
-                        <br />
-                        <label>Purity Duration: <br/>
+                        
+                        <label>Purity Duration: 
                         <input type="number" onChange={handlePurityDuration} required/>
                         </label>
-                        <br />
+                        
                         <button >Submit</button>
+                        <button onClick={handleClear}>Clear</button>
                     </form>
-                    <button onClick={handleClear}>Clear</button>
-                    <div className="user_duration">
+                   
+                    <div className="user_results">
                     
                         <p>{mensesStartDate}</p>
                         <p>{mensesEndDate}</p>

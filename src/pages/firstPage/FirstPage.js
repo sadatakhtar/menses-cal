@@ -6,6 +6,7 @@ function FirstPage() {
         <div className="firstpage_container">
             <Header />
             
+            
         </div>
     )
 }
