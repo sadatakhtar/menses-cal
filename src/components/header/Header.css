@@ -1,0 +1,30 @@
+.header_container{
+    background-color: #3F8AC0;
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+}
+.header_title {
+    border: 1;
+    width: 20%;
+    height: 100%;
+    font-size: 1rem;
+    margin-right: 170px;
+
+}
+.header_logo{
+    width: 10%;
+}
+.header_links{
+    display: flex;
+    width: 60%;
+}
+.header_links > ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+   
+}
+
