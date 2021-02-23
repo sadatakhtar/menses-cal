@@ -6,26 +6,49 @@
    
 }
 .user_form > h1{
-    border: 1px solid rgb(58, 160, 49);
+  
     width: 40%;
     margin: auto;
     text-align: center;
+    margin-top: 4rem;
 }
 .user_form > form{
-    border: 1px solid red;
-    height: 20vh;
-    width: 40%;
+  
+    height: 25vh;
+    width: 50%;
     margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
 }
 .user_form > form > button {
-    width: 150px;
+    width: 100px;
     margin: auto;
+    background-color: #3F8AC0;
+    outline: none;
+    font-weight: 500;
+}
+.user_form > form > button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+.user_form > form > label{
+    margin-top: 0.6rem;
+    font-size: 1.3rem;
 }
 
 .user_results{
     border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
 }
 
-
+#purity{
+    width: 50px;
+}
