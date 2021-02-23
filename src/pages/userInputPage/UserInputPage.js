@@ -25,7 +25,11 @@ function UserInputPage() {
         return result;
     }
 
-    //
+    //Habit zone check function
+    function habbitZoneCheck(startBleed, endBleed){
+        //in progress
+
+    }
 
     const handleStartDate = (e) => {
         setMensesStartDate(e.target.value);
@@ -104,11 +108,14 @@ function UserInputPage() {
                     <div className="user_results">
                         <h1>Results</h1>
                     
-                        <p>{`Menses began on ${mensesStartDate}`}</p>
-                        <p>{`Menses ended on ${mensesEndDate}`}</p>
-                        <p>{`Duration of your menses is ${mensesDuration} days`}</p>
-                        <p>{`Next expected menses start date is ${nextExpectedMensesStartDate}`}</p>
-                        <p>{`Next expected menses end date is ${nextExpectedMensesEndDate}`}</p>
+                        <p>{`Menses began on: `}</p>
+                        <p id="mensesSD">{mensesStartDate}</p>
+                        <p>{`Menses end's on: `}</p>
+                        <p id="mensesED">{mensesEndDate}</p>
+                        <p>{`Duration of menses in days: `}</p>
+                        <p id="mensesD">{mensesDuration}</p>
+                        <p>{`Next expected menses start date is... ${nextExpectedMensesStartDate}`}</p>
+                        <p>{`Next expected menses end date is... ${nextExpectedMensesEndDate}`}</p>
                     </div>
                 </div>
 

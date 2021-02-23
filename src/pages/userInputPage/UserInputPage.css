@@ -1,6 +1,6 @@
 .user_body{
     border: 2px solid black;
-    height: 80vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
    
@@ -41,7 +41,6 @@
 }
 
 .user_results{
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,4 +50,17 @@
 
 #purity{
     width: 50px;
+}
+#mensesSD,   #mensesNSD{
+    font-size: 1.5rem;
+    color: darkred;
+}
+#mensesED{
+    font-size: 1.5rem;
+    color: green;
+}
+#mensesD{
+    color: rgb(105, 115, 255);
+    font-size: 3rem;
+    border: 1px black;
 }
