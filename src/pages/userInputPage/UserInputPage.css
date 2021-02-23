@@ -11,17 +11,25 @@
     margin: auto;
     text-align: center;
     margin-top: 4rem;
+    
+}
+.user_form > h3 {
+    font-weight: 400;
+    text-align: center;
+    margin-top: 3rem;
 }
 .user_form > form{
-  
+    border: 2px solid #DEF1FF;
+    background-color: #DEF1FF;
+    box-shadow: 5px 10px lightgray;
     height: 25vh;
-    width: 50%;
+    width: 60%;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 .user_form > form > button {
     width: 100px;
@@ -36,16 +44,25 @@
     color: white;
 }
 .user_form > form > label{
+   
     margin-top: 0.6rem;
     font-size: 1.3rem;
 }
 
 .user_results{
+    border: 2px solid #DEF1FF;
+    box-shadow: 5px 10px lightgray;
+    width: 60%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 4rem;
+    background-color: #DEF1FF;
+}
+.user_results > p{
+    margin-top: 0;
 }
 
 #purity{
@@ -53,14 +70,28 @@
 }
 #mensesSD,   #mensesNSD{
     font-size: 1.5rem;
-    color: darkred;
+    color: rgb(141, 30, 15);
 }
 #mensesED{
     font-size: 1.5rem;
-    color: green;
+    color: rgb(86, 148, 24);
 }
 #mensesD{
     color: rgb(105, 115, 255);
     font-size: 3rem;
     border: 1px black;
+}
+#mensesNESD{
+    border: 1px solid red;
+    color: rgb(141, 30, 15);
+    font-size: 1.5rem;
+    margin-top: 0;
+
+}
+
+ #mensesNEED{
+     border: 1px solid red;
+    color: rgb(86, 148, 24);
+    font-size: 1.5rem;
+    margin-top: 0;
 }

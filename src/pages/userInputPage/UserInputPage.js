@@ -25,11 +25,43 @@ function UserInputPage() {
         return result;
     }
 
-    //Habit zone check function
-    function habbitZoneCheck(startBleed, endBleed){
-        //in progress
+    // //Habit zone check function
+    // function habbitZoneCheck(startBleed, endBleed){
+    //     //need to pull the below states from DB - these are temp values for now
+    //     let mensesStartDateHZ;
+    //     let mensesEndDateHZ;
+    //     let habbitZoneBlood;
+    //     let mensesDurationHZ;
+    //     let mensesArray = [];
 
-    }
+    //     // > 3 days
+
+
+    //     //3-10 days
+
+
+    //     //over 10 days
+
+    //         //overlap at start
+    //         if(endBleed < nextExpectedMensesEndDate && startBleed < nextExpectedMensesStartDate){
+    //             //check how many days overlap exists
+    //             habbitZoneBlood = endBleed - nextExpectedMensesStartDate;
+    //             habbitZoneBlood >= 3 ? (mensesStartDateHZ = nextExpectedMensesStartDate , mensesEndDateHZ = endBleed) : (mensesStartDateHZ = startBleed, mensesEndDateHZ = endBleed);
+    //         }
+
+    //         //overlap at end
+    //         if(startBleed > nextExpectedMensesStartDate && endBleed > nextExpectedMensesEndDate){
+    //             habbitZoneBlood = nextExpectedMensesEndDate - startBleed;
+
+    //             habbitZoneBlood >= 3 ? (mensesStartDateHZ= startBleed, mensesEndDateHZ = nextExpectedMensesEndDate) : (mensesStartDateHZ = startBleed, mensesEndDateHZ = mensesStartDate + mensesDuration);
+
+    //         }
+
+
+
+
+
+    // }
 
     const handleStartDate = (e) => {
         setMensesStartDate(e.target.value);
@@ -87,7 +119,8 @@ function UserInputPage() {
            
 
                 <div className="user_form">
-                    <h1>User Input</h1>
+                    <h1>Welcome username</h1>
+                    <h3>Please fill in the details below</h3>
                     <form onSubmit={handleSubmit}>
                         <label>Menses Start Date: <br/>
                         <input type="date" onChange={handleStartDate} required/>
@@ -114,8 +147,10 @@ function UserInputPage() {
                         <p id="mensesED">{mensesEndDate}</p>
                         <p>{`Duration of menses in days: `}</p>
                         <p id="mensesD">{mensesDuration}</p>
-                        <p>{`Next expected menses start date is... ${nextExpectedMensesStartDate}`}</p>
-                        <p>{`Next expected menses end date is... ${nextExpectedMensesEndDate}`}</p>
+                        <p>{`Next expected menses start date is... `}</p>
+                        <p id="mensesNESD">{`${nextExpectedMensesStartDate}`}</p>
+                        <p>{`Next expected menses end date is... `}</p>
+                        <p id="mensesNEED">{`${nextExpectedMensesEndDate}`}</p>
                     </div>
                 </div>
 
