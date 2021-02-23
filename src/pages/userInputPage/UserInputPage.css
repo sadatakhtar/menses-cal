@@ -77,12 +77,22 @@
     color: rgb(86, 148, 24);
 }
 #mensesD{
-    color: rgb(105, 115, 255);
-    font-size: 3rem;
+    color: rgb(225, 225, 236);
+    font-size: 2.5rem;
     border: 1px black;
+    background-color: #3F8AC0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    margin-top: 1rem;
+    border-radius: 200px;
 }
 #mensesNESD{
-    border: 1px solid red;
+    box-shadow: 2.5px 5px lightgray;
+    background-color: white;
+    padding: 5px;
     color: rgb(141, 30, 15);
     font-size: 1.5rem;
     margin-top: 0;
@@ -90,8 +100,10 @@
 }
 
  #mensesNEED{
-     border: 1px solid red;
-    color: rgb(86, 148, 24);
+    box-shadow: 2.5px 5px lightgray;
+    color: rgb(47, 78, 16);
+    padding: 5px;
+    background-color: white;;
     font-size: 1.5rem;
     margin-top: 0;
 }
