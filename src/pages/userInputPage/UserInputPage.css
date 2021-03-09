@@ -45,8 +45,9 @@
 }
 .user_form > form > label{
    
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     font-size: 1.3rem;
+    
 }
 
 .user_results{
@@ -78,7 +79,7 @@
 }
 #mensesD{
     color: rgb(225, 225, 236);
-    font-size: 2.5rem;
+    font-size: 3rem;
     border: 1px black;
     background-color: #3F8AC0;
     display: flex;
