@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './UserInputPage.css';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
+import { Link } from 'react-router-dom'
 
 function UserInputPage() {
 
@@ -24,44 +25,6 @@ function UserInputPage() {
         result.setTime(result.getTime() + days * 86400000);
         return result;
     }
-
-    // //Habit zone check function
-    // function habbitZoneCheck(startBleed, endBleed){
-    //     //need to pull the below states from DB - these are temp values for now
-    //     let mensesStartDateHZ;
-    //     let mensesEndDateHZ;
-    //     let habbitZoneBlood;
-    //     let mensesDurationHZ;
-    //     let mensesArray = [];
-
-    //     // > 3 days
-
-
-    //     //3-10 days
-
-
-    //     //over 10 days
-
-    //         //overlap at start
-    //         if(endBleed < nextExpectedMensesEndDate && startBleed < nextExpectedMensesStartDate){
-    //             //check how many days overlap exists
-    //             habbitZoneBlood = endBleed - nextExpectedMensesStartDate;
-    //             habbitZoneBlood >= 3 ? (mensesStartDateHZ = nextExpectedMensesStartDate , mensesEndDateHZ = endBleed) : (mensesStartDateHZ = startBleed, mensesEndDateHZ = endBleed);
-    //         }
-
-    //         //overlap at end
-    //         if(startBleed > nextExpectedMensesStartDate && endBleed > nextExpectedMensesEndDate){
-    //             habbitZoneBlood = nextExpectedMensesEndDate - startBleed;
-
-    //             habbitZoneBlood >= 3 ? (mensesStartDateHZ= startBleed, mensesEndDateHZ = nextExpectedMensesEndDate) : (mensesStartDateHZ = startBleed, mensesEndDateHZ = mensesStartDate + mensesDuration);
-
-    //         }
-
-
-
-
-
-    // }
 
     const handleStartDate = (e) => {
         setMensesStartDate(e.target.value);
@@ -94,10 +57,9 @@ function UserInputPage() {
        let nextExMensesEndDate = addDays(nextExpectedMensesStartDate, mensesDuration);
       setNextExpectedMensesEndDate(nextExMensesEndDate);
       console.log(nextExMensesEndDate);
-   
-
-
     }
+
+   
 
     //Reset selected dates and figures
     const handleClear = () => {
@@ -151,7 +113,14 @@ function UserInputPage() {
                         <p id="mensesNESD">{`${nextExpectedMensesStartDate}`}</p>
                         <p>{`Next expected menses end date is... `}</p>
                         <p id="mensesNEED">{`${nextExpectedMensesEndDate}`}</p>
+
+                        <div>
+                            <h3>Click button below if new bleeding occurs</h3>
+                           <Link to="/newbleed"> <button>New Blood</button></Link>
+                        </div>
                     </div>
+
+                   
                 </div>
 
             </div>
