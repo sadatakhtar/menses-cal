@@ -13,6 +13,7 @@ function UserInputPage() {
     const [purityDuration, setPurityDuration] = useState(0);
     const [nextExpectedMensesStartDate, setNextExpectedMensesStartDate] = useState('');
     const [nextExpectedMensesEndDate, setNextExpectedMensesEndDate] = useState('');
+    const [mensesEndToPurityEndInDate, setMensesEndToPurityEndInDate] = useState('');
 
     //Get number of days between 2 dates
     function getDiffInDays(date1, date2){
@@ -57,6 +58,10 @@ function UserInputPage() {
        let nextExMensesEndDate = addDays(nextExpectedMensesStartDate, mensesDuration);
       setNextExpectedMensesEndDate(nextExMensesEndDate);
       console.log(nextExMensesEndDate);
+
+      //calculate menses end date + purityDuration => date format
+      let mensesEndToPurityEnd = addDays(new Date(mensesEndDate), purityDuration);
+      setMensesEndToPurityEndInDate(mensesEndToPurityEnd);
     }
 
    
@@ -113,9 +118,10 @@ function UserInputPage() {
                         <p id="mensesNESD">{`${nextExpectedMensesStartDate}`}</p>
                         <p>{`Next expected menses end date is... `}</p>
                         <p id="mensesNEED">{`${nextExpectedMensesEndDate}`}</p>
+                        <p>{`menses end to purity end in date: ${mensesEndToPurityEndInDate}`}</p>
 
                         <div>
-                            <h3>Click button below if new bleeding occurs</h3>
+                            <h3>Click button below if new bleeding occurs before next expected date</h3>
                            <Link to="/newbleed"> <button>New Blood</button></Link>
                         </div>
                     </div>
