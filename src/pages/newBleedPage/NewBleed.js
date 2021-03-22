@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import moment from 'moment';
 import './NewBleed.css'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
@@ -15,7 +16,7 @@ function NewBleed() {
     const [effectiveBleedEnd, setEffectiveBleedEnd] = useState('');
     const [prevBleedLimit, setPrevBleedLimit] = useState(15);
     const [newData, setNewData] = useState('');
-    const [prevBleedStart, setPrevBleedStart] = useState(1616188400000);
+    const [prevBleedStart, setPrevBleedStart] = useState('');
     const [prevBleedEnd, setPrevBleedEnd] = useState('');
     const [durationBlood, setDurationBlood] = useState('');
     
@@ -59,18 +60,18 @@ function NewBleed() {
         //new bleed start date minus purity days = newD
         let newD = minusDays(new Date(newBleedStart), prevBleedLimit); //new bleed date subtract number of previous purity days
         setNewData(newD);
-        console.log(`new bleed start date minus purity ${newD.getTime()}`);
+        console.log(`new bleed start date minus purity ${moment(newBleedStart).subtract(15, 'days').calendar()}`);
         let newB = returnDateinNumber(new Date(newBleedStart));
-        console.log(`new bleed start date without purity days ${newB.getTime()}`);
-        console.log(returnNumToDate(96400000));
+        console.log(`new bleed start date : ${moment(newB.getTime()).format('MMM Do')}`);
+        //console.log(returnNumToDate(96400000));
 
 
-        //compare newB (newBleedStart) with newD(newBleedStart - prevBleedLimit)
-
-        if(newB.getTime() > newD.getTime()){
+        //compare newB (newBleedStart) with prevBleedEnd
+        if(  moment(newB.getTime()).format('MMM Do') < moment(prevBleedEnd).format('MMM Do')){
             console.log('yes');
-            let durB = returnDateinNumber(new Date(newBleedEnd)); 
-            setDurationBlood(durB - prevBleedStart); 
+           // let durBlood = returnDateinNumber(new Date(newBleedEnd)); 
+           // setDurationBlood(durBlood - prevBleedStart); 
+            setDurationBlood(moment(newBleedEnd).subtract(moment(prevBleedStart).format('dddd'), 'days' ).date());
             setEffectiveBleedStart(prevBleedStart);
             setEffectiveBleedEnd(newBleedEnd);
 
@@ -80,8 +81,10 @@ function NewBleed() {
 
         }else {
             console.log('no');
-            let durB = returnDateinNumber(new Date(newBleedEnd)); 
+            let durB = returnDateinNumber(new Date(newBleedEnd));
+            console.log(durationBlood);
             setDurationBlood(durB - newBleedStart); 
+            console.log(durationBlood);
             setEffectiveBleedStart(newBleedStart);
             setEffectiveBleedEnd(newBleedEnd);
 
@@ -96,6 +99,16 @@ function NewBleed() {
 
     }
 
+    // function newBleedingAgain(){
+    //     let pblAddfifteen = moment(prevBleedLimit).add(15, 'days').date();
+    //     if(moment(newBleedStart).isAfter(pblAddfifteen)){
+    //         console.log('if condition is working!');
+
+    //     }else{
+    //         console.log('if condition not working!!');
+    //     }
+    // }
+
     const handleNewBloodStart = (e) => {
         setNewBleedStart(e.target.value);
     }
@@ -105,6 +118,7 @@ function NewBleed() {
         let res = getDiffInDays(new Date(newBleedStart), new Date(newBleedEnd));
         setNewDurationBleed(res);
         newBleeding();
+      // newBleedingAgain();
          
 
     }
@@ -127,6 +141,15 @@ function NewBleed() {
                     <input type="date" onChange={(e) => setNewBleedEnd(e.target.value)}/>
                     </label>
                     <br/>
+                    <label>Previous blood end date: <br/>
+                    <input type="date" onChange={(e) => setPrevBleedEnd(e.target.value)}/>
+                    </label>
+             
+                    <br/>
+                    <label>Previous blood Start date: <br/>
+                    <input type="date" onChange={(e) => setPrevBleedStart(e.target.value)}/>
+                    </label>
+                    <br/>
                    
                     <button>Submit</button>
                 </form>
@@ -134,6 +157,9 @@ function NewBleed() {
                 <p>{`Duration of new bleeding in days: ${newDurationBleed}`}</p>
                 <p>{`15 days minus the new bleed start date: ${newData}`}</p>
                 <p>{`Duration of Blood: ${durationBlood}`}</p>
+                <p>{`Effective Bleed start: ${effectiveBleedStart}`}</p>
+                <p>{`Effective Bleed end: ${effectiveBleedEnd}`}</p>
+               
                
                 
 
