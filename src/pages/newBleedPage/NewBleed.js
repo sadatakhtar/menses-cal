@@ -10,32 +10,37 @@ function NewBleed() {
     const [newDurationBleed, setNewDurationBleed] = useState(0);
 
 
-    //Temporary states created here until DB is created or untill state management is in place
+    //TEMPORARY STATES CREATED HERE UNTILL DB IS CREATED OR UNTILL STATE MANAGEMENT CONFIGURED
     const [effectiveBleedStart, setEffectiveBleedStart] = useState('');
     const [effectiveBleedEnd, setEffectiveBleedEnd] = useState('');
-    const [prevBleedLimit, setPrevBleedLimit] = useState(10);
+    const [prevBleedLimit, setPrevBleedLimit] = useState(15);
     const [newData, setNewData] = useState('');
     const [prevBleedStart, setPrevBleedStart] = useState(1616188400000);
+    const [prevBleedEnd, setPrevBleedEnd] = useState('');
     const [durationBlood, setDurationBlood] = useState('');
     
 
-
-
-
-     //Add days to existing date
+     //ADD DAYS TO EXISTING DATE
      function addDays(date, days){
         let result = new Date(date);
         result.setTime(result.getTime() + days * 86400000);
         return result;
     }
-    //function to return newBleedStart into time format
-    function returnDate(date) {
+    //FUNCTION TO RETURN NEWBLEEDSTART IN TIME FORMAT
+    function returnDateinNumber(date) {
         let res = new Date(date);
         res.setTime(res.getTime());
         return res;
 
     }
-    //subtract days from date
+    //CONVERT NUMBER TO DATE
+    function returnNumToDate(number){
+        let res = new Date(number);
+        res.setTime(res.getDay());
+        return res;
+
+    }
+    //MINUS DAYS FROM DATE
     function minusDays(date, days){
         let result = new Date(date);
         result.setTime(result.getTime() - days * 86400000);
@@ -43,9 +48,52 @@ function NewBleed() {
     }
    
 
-     //Get number of days between 2 dates
+     //GET NUMBER OF DAYS BETWEEN 2 DATES
      function getDiffInDays(date1, date2){
         return Math.round((date2 - date1) / (1000*60*60*24));
+    }
+
+    //FUNCTION CALLED WHEN THERE IS NEW BLEEEDING
+    function newBleeding(){
+    
+        //new bleed start date minus purity days = newD
+        let newD = minusDays(new Date(newBleedStart), prevBleedLimit); //new bleed date subtract number of previous purity days
+        setNewData(newD);
+        console.log(`new bleed start date minus purity ${newD.getTime()}`);
+        let newB = returnDateinNumber(new Date(newBleedStart));
+        console.log(`new bleed start date without purity days ${newB.getTime()}`);
+        console.log(returnNumToDate(96400000));
+
+
+        //compare newB (newBleedStart) with newD(newBleedStart - prevBleedLimit)
+
+        if(newB.getTime() > newD.getTime()){
+            console.log('yes');
+            let durB = returnDateinNumber(new Date(newBleedEnd)); 
+            setDurationBlood(durB - prevBleedStart); 
+            setEffectiveBleedStart(prevBleedStart);
+            setEffectiveBleedEnd(newBleedEnd);
+
+            //no change to prevBleedStart
+            setPrevBleedEnd(newBleedEnd);
+            setPrevBleedLimit(newBleedEnd + 15);
+
+        }else {
+            console.log('no');
+            let durB = returnDateinNumber(new Date(newBleedEnd)); 
+            setDurationBlood(durB - newBleedStart); 
+            setEffectiveBleedStart(newBleedStart);
+            setEffectiveBleedEnd(newBleedEnd);
+
+            //Reset prevBleed states
+            setPrevBleedStart(newBleedStart);
+            setPrevBleedEnd(newBleedEnd);
+            setPrevBleedLimit(newBleedEnd + 15);
+
+
+
+        }
+
     }
 
     const handleNewBloodStart = (e) => {
@@ -56,33 +104,8 @@ function NewBleed() {
         e.preventDefault();
         let res = getDiffInDays(new Date(newBleedStart), new Date(newBleedEnd));
         setNewDurationBleed(res);
-       
-        //Clarify with rahiel here
-
-        //get previous bleeding end date
-
-        //add purity days to end date =  anotherDate
-
-        //new bleed start date minus purity days = newData
-        let newD = minusDays(new Date(newBleedStart), prevBleedLimit); //new bleed date subtract number of previous purity days
-        setNewData(newD);
-        //console.log(newD.getTime());
-        let newB = returnDate(new Date(newBleedStart));
-        console.log(newB.getTime());
-
-
-        //compare newB (newBleedStart) with newD(newBleedStart - prevBleedLimit)
-
-        if(newB.getTime() < newD.getTime()){
-           // console.log('yes');
-            let durB = returnDate(new Date(newBleedEnd)); //converts newBleedEnd into number
-            setDurationBlood(durB - prevBleedStart);
-            
-
-        }else {
-            //console.log('no');
-        }
-       
+        newBleeding();
+         
 
     }
 
@@ -111,6 +134,7 @@ function NewBleed() {
                 <p>{`Duration of new bleeding in days: ${newDurationBleed}`}</p>
                 <p>{`15 days minus the new bleed start date: ${newData}`}</p>
                 <p>{`Duration of Blood: ${durationBlood}`}</p>
+               
                 
 
             </div>
