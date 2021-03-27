@@ -99,15 +99,27 @@ function NewBleed() {
 
     }
 
-    // function newBleedingAgain(){
-    //     let pblAddfifteen = moment(prevBleedLimit).add(15, 'days').date();
-    //     if(moment(newBleedStart).isAfter(pblAddfifteen)){
-    //         console.log('if condition is working!');
+  
+    function scenarios(durationBlood, effectiveBleedStart, effectiveBleedEnd){
+        let changeHabbitZone = false;
 
-    //     }else{
-    //         console.log('if condition not working!!');
-    //     }
-    // }
+        if(changeHabbitZone === true){
+            //current HZ becomes past, next HZ becomes current
+
+        }
+
+        //duration of blood less than 3 days
+        if(durationBlood < 3){
+
+            //before current HZ
+            if(effectiveBleedStart ){
+
+            }
+
+        }
+
+
+    }
 
     const handleNewBloodStart = (e) => {
         setNewBleedStart(e.target.value);
